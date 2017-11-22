@@ -1,0 +1,22 @@
+onLoadName = "Theater of War";
+author = "MSOT-Fry";
+OnLoadMission = "a MSOT Produktion";
+// loadScreen =  "pic\Titel.paa";
+
+
+
+class Header
+{
+ gameType = COOP;
+ minPlayers = 1;
+ maxPlayers = 4;
+ playerCountMultipleOf = 1;
+};
+
+
+respawn = 3;
+respawndelay = 30;
+disabledAI = 1;
+
+
+#include "config_all.hpp"
