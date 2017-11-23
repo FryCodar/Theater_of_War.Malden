@@ -28,7 +28,8 @@ params ["_idx","_value","_value1","_value2"];
 If(missionNamespace getVariable [STRVAR_DO(write_to_missinfo),false])then
 {waitUntil{!(missionNamespace getVariable [STRVAR_DO(write_to_missinfo),false])};};
 
-missionNamespace setVariable [STRVAR_DO(delete_from_missinfo),true,true];
+If(!missionNamespace getVariable [STRVAR_DO(delete_from_missinfo),false])then{
+missionNamespace setVariable [STRVAR_DO(delete_from_missinfo),true,true];};
 
 _work_arround = [];
 _output = [];
@@ -181,4 +182,5 @@ switch(toUpper _idx)do
                      };
 };
 
-missionNamespace setVariable [STRVAR_DO(delete_from_missinfo),false,true];
+If(!missionNamespace getVariable [STRVAR_DO(manage_delete_missinfo),false])then{
+  missionNamespace setVariable [STRVAR_DO(delete_from_missinfo),false,true];};
