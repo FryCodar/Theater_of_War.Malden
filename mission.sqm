@@ -16,7 +16,7 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={7827.5933,99.771049,10134.988};
+		pos[]={7833.9849,94.059769,10139.704};
 		dir[]={0.71695995,-0.51582026,0.46895921};
 		up[]={0.43168536,0.85668868,0.28236315};
 		aside[]={0.5474028,-3.3943797e-007,-0.83688539};
@@ -249,6 +249,25 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
+			property="ReviveBleedOutDelay";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
+						};
+					};
+					value=300;
+				};
+			};
+		};
+		class Attribute1
+		{
 			property="RespawnTemplates";
 			expression="true";
 			class Value
@@ -280,25 +299,6 @@ class CustomAttributes
 							};
 						};
 					};
-				};
-			};
-		};
-		class Attribute1
-		{
-			property="ReviveBleedOutDelay";
-			expression="false";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
-					value=300;
 				};
 			};
 		};
@@ -357,7 +357,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=51;
+		items=50;
 		class Item0
 		{
 			dataType="Object";
@@ -2150,20 +2150,6 @@ class Mission
 			};
 			id=236;
 			atlOffset=1.9073486e-006;
-		};
-		class Item50
-		{
-			dataType="Trigger";
-			position[]={7916.6768,29.614601,10181.75};
-			class Attributes
-			{
-				condition="call{this}";
-				onActivation="call{hint ""hallo"";}";
-				activationType="CIV D";
-				activationBy="WEST";
-			};
-			id=239;
-			type="EmptyDetectorAreaR50";
 		};
 	};
 };
