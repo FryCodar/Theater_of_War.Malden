@@ -14,7 +14,7 @@ Author: Fry
 
 private ["_found","_idx","_work_arr","_work_part","_vec_type","_vec_pos","_vec_dir","_vec_time","_new_vec"];
 params ["_vec_name"];
-hint "hit the Vec";
+
 If(isServer)then
 {
   If(count (missionNamespace getVariable [STRVAR_DO(resp_store),[]]) > 0)then
