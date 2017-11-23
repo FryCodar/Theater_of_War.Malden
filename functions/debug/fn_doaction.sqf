@@ -38,8 +38,17 @@ if(!hasInterface) exitwith {};
 
             hint "Adding abeschlossen";
             */
+            TEST_ARR = [1,2,3,4,5,6];
 
-            hint (MSOT_EMYTR_SIDE + " D");
+            [] spawn MSOT_system_fnc_testHandler;
+            sleep 4;
+
+            F_LOOP(_i,7,20)
+            {
+              TEST_ARR pushBack _i;
+              sleep 1;
+            };
+            //hint (MSOT_EMYTR_SIDE + " D");
           };
    case 3:{
              If(captive player)then
