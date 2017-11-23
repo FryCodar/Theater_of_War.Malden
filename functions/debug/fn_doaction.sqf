@@ -38,14 +38,17 @@ if(!hasInterface) exitwith {};
 
             hint "Adding abeschlossen";
             */
-            TEST_ARR = [1,2,3,4,5,6];
+            _test_arr = [1,2,3,4,5,6];
+            missionNamespace setVariable [STRVAR_DO(holder_manage_mission),_test_arr,false];
 
             [] spawn MSOT_system_fnc_testHandler;
             sleep 4;
 
             F_LOOP(_i,7,20)
             {
-              TEST_ARR pushBack _i;
+              private _holder = missionNamespace getVariable [STRVAR_DO(holder_manage_mission),[]];
+              ARR_ADDVAR(_holder,_i);
+              missionNamespace setVariable [STRVAR_DO(holder_manage_mission),_holder,false];
               sleep 1;
             };
             //hint (MSOT_EMYTR_SIDE + " D");
