@@ -34,6 +34,9 @@ class TAGADD
 			 class getWorkClasses {
 				 											description = "Search available Classes";
 			 											};
+			 class manageMissionCheck{
+				 												 description = "manage Requests to MissionCheck";
+			 												 };
 			 class setClientAction {
 				 											 description = "Add a Action to Objects";
 			 											 };
