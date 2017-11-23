@@ -46,7 +46,7 @@ If(count _holder > 0)then
       REMOTE_NOREXESM(_obj,removeAllActions,([0,-2] select isDedicated));
       If(_founded_arr select 3)then{SET_POSATLM(_obj,(getPosATL _obj),15);};
       _set_arr = ["MAINTARGETS",_obj,(_founded_arr select 1),(_founded_arr select 3)];
-      REMOTE_TRIEXESM(_set_arr,system,doMissionCheck,([0,-2] select isDedicated));
+      REMOTE_TRIEXESM(_set_arr,system,manageMissionCheck,([0,-2] select isDedicated));
     };
   };
 };
