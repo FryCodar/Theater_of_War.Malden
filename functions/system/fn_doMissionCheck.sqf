@@ -25,11 +25,11 @@ private ["_work_arround","_output","_found_pos","_holder","_search_idx","_f1_idx
          "_script","_clear_mission","_holder_action","_handle"];
 params ["_idx","_value","_value1","_value2"];
 
-If(missionNamespace getVariable [STRVAR_DO(write_to_missinfo),false])then
-{waitUntil{!(missionNamespace getVariable [STRVAR_DO(write_to_missinfo),false])};};
-
 If(!missionNamespace getVariable [STRVAR_DO(delete_from_missinfo),false])then{
 missionNamespace setVariable [STRVAR_DO(delete_from_missinfo),true,true];};
+
+If(missionNamespace getVariable [STRVAR_DO(write_to_missinfo),false])then
+{waitUntil{!(missionNamespace getVariable [STRVAR_DO(write_to_missinfo),false])};};
 
 _work_arround = [];
 _output = [];
