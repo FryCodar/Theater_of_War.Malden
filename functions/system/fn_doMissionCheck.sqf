@@ -88,7 +88,7 @@ switch(toUpper _idx)do
                             If(count _search_idx > 0)then
                             {
                               ARR_MINIDX(_holder_action,(_search_idx select 0));
-                              If(!isNil "_value2" && (typeName _value) isEqualTo "BOOL")then{deleteVehicle _value;};
+                              If(!isNil "_value2" && {(typeName _value2) isEqualTo "BOOL"})then{deleteVehicle _value;};
                               missionNamespace setVariable [STRVAR_DO(action_storage),_holder_action,true];
                             };
                           };
