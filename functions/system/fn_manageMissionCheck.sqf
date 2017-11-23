@@ -4,19 +4,34 @@ If(isMultiplayer)then{if(hasInterface) exitWith{};};
 /* --------------------------------------------------------------------------------------------------------------
 Function: MSOT_system_fnc_manageMissionCheck
 
-Description: Stores Units/Vehicles etc in System.
-
-Parameters: [INDEX,POSITION/OBJECT,STRING/NUMBER]
-
-            INDEX             -    "MAINTARGETS","RESPAWNPOSES","MAINTRIGGER"
-            POSITION/OBJECT   -     OBJECT at "MAINTARGETS" & "MAINTRIGGER" / POSITION at "RESPAWNPOSES"
-            STRING/NUMBER     -     STRING at "MAINTARGETS" / NUMBER at "MAINTRIGGER"
-
-Returns: Nothing
+Description: manage Requests to MissionCheck
 
 Examples:
-            _isStored = [] spawn MSOT_system_fnc_manageMissionCheck
+            [] spawn MSOT_system_fnc_manageMissionCheck
 
 Author: Fry
 
 ----------------------------------------------------------------------------------------------------------------- */
+private ["_check_arr"];
+If(isNil "MANAGE_MISSION_HOLDER")then{MANAGE_MISSION_HOLDER = [];};
+_check_arr = _this;
+sleep (random 4);
+
+switch(true)do
+{
+  case (missionNamespace getVariable [STRVAR_DO(write_to_missinfo),false]):{
+                                                                             ARR_ADDVAR(MANAGE_MISSION_HOLDER,_check_arr);
+                                                                             If(!missionNamespace getVariable [STRVAR_DO(manage_delete_missinfo),false])then
+                                                                             {
+                                                                              [] spawn MFUNC(system,workOffMisHolder);
+                                                                             };
+                                                                           };
+  case (missionNamespace getVariable [STRVAR_DO(delete_from_missinfo),false]):{
+                                                                                ARR_ADDVAR(MANAGE_MISSION_HOLDER,_check_arr);
+                                                                                If(!missionNamespace getVariable [STRVAR_DO(manage_delete_missinfo),false])then
+                                                                                {
+                                                                                  [] spawn MFUNC(system,workOffMisHolder);
+                                                                                };
+                                                                              };
+  case (!missionNamespace getVariable [STRVAR_DO(delete_from_missinfo),false]):{_check_arr spawn MFUNC(system,doMissionCheck);};
+};
