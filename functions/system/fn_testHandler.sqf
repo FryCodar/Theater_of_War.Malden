@@ -1,10 +1,10 @@
 #include "msot_components.hpp"
 private ["_counter"];
 
-If(count TEST_ARR > 0)then
+If(count (missionNamespace getVariable [STRVAR_DO(holder_manage_mission),[]]) > 0)then
 {
   {
-    hintSilent format["%1\n\n%2",_x,TEST_ARR];
+    hintSilent format["%1\n\n%2",_x,(missionNamespace getVariable [STRVAR_DO(holder_manage_mission),[]])];
     sleep 2;
-  }forEach TEST_ARR;
+  }forEach (missionNamespace getVariable [STRVAR_DO(holder_manage_mission),[]]);
 };
