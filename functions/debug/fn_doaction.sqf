@@ -38,20 +38,9 @@ if(!hasInterface) exitwith {};
 
             hint "Adding abeschlossen";
             */
-            _test_arr = [1,2,3,4,5,6];
-            missionNamespace setVariable [STRVAR_DO(holder_manage_mission),_test_arr,false];
+          //  ["MAINTARGETS",(_this select 0),"SUCCESS"] remoteExec ["MSOT_system_fnc_testHandler",0];
+            
 
-            [] spawn MSOT_system_fnc_testHandler;
-            sleep 4;
-
-            F_LOOP(_i,7,20)
-            {
-              private _holder = missionNamespace getVariable [STRVAR_DO(holder_manage_mission),[]];
-              ARR_ADDVAR(_holder,_i);
-              missionNamespace setVariable [STRVAR_DO(holder_manage_mission),_holder,false];
-              sleep 1;
-            };
-            //hint (MSOT_EMYTR_SIDE + " D");
           };
    case 3:{
              If(captive player)then
