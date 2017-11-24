@@ -17,7 +17,7 @@ If(isMultiplayer)then{if(hasInterface) exitWith{};};
 
 1 - Aufbau der Mission mit Zielen
 2 - Was soll passieren, nach dem die hälfte der Feinde getötet wurden/oder andere Eigenschaften durch Trigger ausgelöst(TriggerName veranlassen-["MAINTRIGGER",TRIGGERNAME,INDEX])
-3 - Informationen, wenn Ziele zerstört wurden (STRING ist STATE -"SUCCESS"/"FAILED")
+3 - Informationen, wenn Ziele bearbeitet wurden (STRING ist STATE -"SUCCESS"/"FAILED")
 4 - Was soll nach Beendigung aller Maintargets passieren (STRING ist STATE -"SUCCESS"/"FAILED")
 5 - Nachbereitung der Mission (TriggerName-löschen veranlassen - ["MAINTRIGGER",TRIGGERNAME,INDEX])
 
