@@ -5,18 +5,28 @@ Function: MSOT_system_fnc_setTrigger
 
 Description: Set a defined Trigger on Map
 
-Parameters: [OBJECT,CALLER,ID,ARGUMENTS]
+             SERVER ONLY
 
+Parameters: [INDEX,POSITION,RADIUS]
 
-Returns: Nothing
+            INDEX        -      "ACTIVATE" : activate Trigger by own Side (Playerside)
+                                "LEAVE"    : activate Trigger when leaving the Area by own Side (Playerside)
+                                "DETECTED" : activate Trigger when Enemies discover your Side
+                                "CONTROLLED" : activate Trigger when Enemy units count less than 5 and Enemy Vehicles no longer exists
+
+            Position     -      Position to create the Trigger
+
+            RADIUS       -      Radius of the Trigger (Circle)
+
+Returns: Triggername (ObjectName)
 
 Examples:
-          _this spawn MSOT_system_fnc_setTrigger
+          _triggername = ["ACTIVATE",(getMarkerPos "Town"),400] spawn MSOT_system_fnc_setTrigger;
 
 Author: Fry
 
 ----------------------------------------------------------------------------------------------------------------- */
-private ["_trigger_name"];
+private ["_trigger_name","_exp_arr"];
 params ["_idx","_pos","_size"];
 
 _trigger_name = createTrigger ["EmptyDetector",_pos,false];
@@ -24,73 +34,27 @@ _trigger_name setTriggerArea [_size, _size, 0, false];
 switch(_idx)do
 {
  "ACTIVATE":{
-              _trigger_name setTriggerActivation [MSOT_FRLYTR_SIDE, "PRESENT", false];
-              _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_doMissionCheck",""];
+              _trigger_name setTriggerActivation [MSOT_FRLYTR_SIDE,"PRESENT", false];
+              _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",""];
             };
  "LEAVE":{
             _trigger_name setTriggerActivation [MSOT_FRLYTR_SIDE, "NOT PRESENT", false];
-            _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_doMissionCheck",""];
+            _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",""];
          };
  "DETECTED":{
               _trigger_name setTriggerActivation [MSOT_FRLYTR_SIDE, (MSOT_EMYTR_SIDE + " D"), false];
-              _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_doMissionCheck",""];
+              _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",""];
             };
- ""
+ "CONTROLLED":{
+                _exp_arr = [
+                            "this && {('Man' countType thisList) < 5} && {('LandVehicle' countType thisList) == 0}",
+                            "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",
+                            ""
+                           ];
+                _trigger_name setTriggerActivation [MSOT_EMYTR_SIDE,"PRESENT", false];
+                _trigger_name setTriggerStatements _exp_arr;
+
+              };
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-add_work_trigger = {
-                           private ["_detect_pos","_detect_size","_detect_idx","_detect_trigger"];
-					       _detect_pos = _this select 0;
-					       _detect_size = _this select 1;
-						   _detect_idx = _this select 2;
-
-                           _detect_trigger  = createTrigger["EmptyDetector",_detect_pos,false];
-                           _detect_trigger setTriggerArea[_detect_size,_detect_size,0,false];
-
-						   switch(_detect_idx)do
-						   {
-                             case 0:{
-							         _detect_trigger setTriggerActivation[(format ["%1",OWN_TRIGGER_SIDE]),"PRESENT",false];
-							         _detect_trigger setTriggerStatements["this", "nul = [thisTrigger,thislist,0] spawn do_action",""];
-									};
-							 case 1:{
-							         _detect_trigger setTriggerActivation[(format ["%1",OWN_TRIGGER_SIDE]),(format ["%1 D",ENEMY_TRIGGER_SIDE]),false];
-							         _detect_trigger setTriggerStatements["this", "nul = [thisTrigger,thislist,1] spawn do_action",""];
-									};
-						   };
-                    };
+_trigger_name
