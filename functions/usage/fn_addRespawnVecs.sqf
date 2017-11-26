@@ -19,7 +19,7 @@ If(typeName _vecs_arr isEqualTo "ARRAY" && {count _vecs_arr > 0})then
       _dir = GET_DIR(_vec);
       _set_in = [_vec,_type,_pos_asl,_dir,_resp_time];
       ARR_ADDVAR(_add_arr,_set_in);
-      _vec addEventHandler ["Killed",{[_this select 0] spawn MFUNC(system,setRespawnVecs);}];
+      _vec addEventHandler ["Killed",{REMOTE_TRIEXESM(_this,system,setRespawnVecs,([0,2] select isDedicated));}];
     }forEach _vecs_arr;
     ARR_ADDARR(_save_arr,_add_arr);
     missionNamespace setVariable [STRVAR_DO(resp_store),_save_arr,false];
@@ -31,7 +31,7 @@ If(typeName _vecs_arr isEqualTo "ARRAY" && {count _vecs_arr > 0})then
            _dir = GET_DIR(_vec);
            _set_in = [_vec,_type,_pos_asl,_dir,_resp_time];
            ARR_ADDVAR(_add_arr,_set_in);
-           _vec addEventHandler ["Killed",{[_this select 0] spawn MFUNC(system,setRespawnVecs);}];
+           _vec addEventHandler ["Killed",{REMOTE_TRIEXESM(_this,system,setRespawnVecs,([0,2] select isDedicated));}];
          }forEach _vecs_arr;
          missionNamespace setVariable [STRVAR_DO(resp_store),_add_arr,false];
        };
