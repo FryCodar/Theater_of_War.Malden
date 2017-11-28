@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=240;
+		nextID=244;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={7879.8975,59.066452,10161.052};
-		dir[]={0.71695995,-0.51582026,0.46895921};
-		up[]={0.43168536,0.85668868,0.28236315};
-		aside[]={0.5474028,-3.3943797e-007,-0.83688539};
+		pos[]={12529.93,38.698116,418.7558};
+		dir[]={-0.051047534,-0.50760591,0.86016732};
+		up[]={-0.030072043,0.86155242,0.50675642};
+		aside[]={0.99832195,3.2085518e-007,0.059244707};
 	};
 };
 binarizationWanted=0;
@@ -51,13 +51,14 @@ addons[]=
 	"A3_Structures_F_EPC_Items_Electronics",
 	"A3_Air_F_Beta_Heli_Attack_01",
 	"A3_Air_F_Beta_Heli_Transport_01",
-	"A3_Structures_F_Bootcamp_VR_Helpers"
+	"A3_Structures_F_Bootcamp_VR_Helpers",
+	"A3_Structures_F_Heli_Items_Airport"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=22;
+		items=23;
 		class Item0
 		{
 			className="A3_Boat_F_Jets";
@@ -212,6 +213,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item22
+		{
+			className="A3_Structures_F_Heli";
+			name="Arma 3 Helicopters - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 class DynamicSimulation
@@ -249,25 +257,6 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
-			property="ReviveBleedOutDelay";
-			expression="false";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
-					value=300;
-				};
-			};
-		};
-		class Attribute1
-		{
 			property="RespawnTemplates";
 			expression="true";
 			class Value
@@ -299,6 +288,25 @@ class CustomAttributes
 							};
 						};
 					};
+				};
+			};
+		};
+		class Attribute1
+		{
+			property="ReviveBleedOutDelay";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
+						};
+					};
+					value=300;
 				};
 			};
 		};
@@ -357,7 +365,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=50;
+		items=54;
 		class Item0
 		{
 			dataType="Object";
@@ -2150,6 +2158,143 @@ class Mission
 			};
 			id=236;
 			atlOffset=1.9073486e-006;
+		};
+		class Item50
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={12543.694,23.690552,438.28662};
+				angles[]={-0,3.106066,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				dynamicSimulation=1;
+			};
+			id=240;
+			type="PortableHelipadLight_01_white_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item51
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={12543.675,23.690552,420.46301};
+				angles[]={-0,3.1288183,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				dynamicSimulation=1;
+			};
+			id=241;
+			type="PortableHelipadLight_01_white_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item52
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={12529.842,23.690552,420.47293};
+				angles[]={-0,3.0917766,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				dynamicSimulation=1;
+			};
+			id=242;
+			type="PortableHelipadLight_01_white_F";
+		};
+		class Item53
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={12529.846,23.690552,438.27963};
+				angles[]={-0,3.1213849,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				dynamicSimulation=1;
+			};
+			id=243;
+			type="PortableHelipadLight_01_white_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 };
