@@ -18,9 +18,8 @@ Author: Fry
 -------------------------------------------------------------------------------------------------- */
 
 private ["_position","_output","_found"];
-params ["_pos","_types","_radius","_list"];
+params ["_pos","_types","_radius",["_list",false]];
 
-If(isNil "_list")then{_list = false;};
 _output = If(_list)then{[]}else{0};
 _position = [];
 switch(typeName _pos)do

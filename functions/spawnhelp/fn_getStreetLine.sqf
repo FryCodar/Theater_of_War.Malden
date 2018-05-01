@@ -24,7 +24,7 @@ _is_pos = If((typeName _pos_dir) == "ARRAY")then{true}else{false};
 
 
 _street_block = [_center,100] call MFUNC(spawnhelp,nearestStreet);
-If(typeName _street_block != "STRING")then
+If(!(typeName _street_block isEqualTo "STRING"))then
 {
   If(_is_pos)then{_direction_pos = _pos_dir;}else{_direction_pos = [(position _street_block),100,_pos_dir] call BFUNC(relPos);};
 

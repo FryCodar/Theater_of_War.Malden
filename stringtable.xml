@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project name="Lost in the Job">
+   <Package name="main">
+       <Key ID="STR_BRIEFTXT">
+         <Original>While returning from a mission you had an accident! You are stranded in enemy territory. Be careful! With enemy units must be expected at any time! Due to the lack of diplomatic relations, we can not help you. We hope you will be back soon! You find a Way.</Original>
+         <German>Wärend der Rückkehr von einer Mission hatten Sie einen Unfall! Sie sind auf feindlichem Gebiet gestrandet. Seien Sie vorsichtig! Mit feindlichen Einheiten muss jederzeit gerechnet werden! Aufgrund der fehlenden diplomatischen Beziehungen, können wir Ihnen keine Hilfe leisten. Wir hoffen dass Sie bald wieder zurück sind! Sie finden einen Weg.</German>
+       </Key>
+       <Key ID="STR_BRIEFTAG_SITUATION">
+         <Original>Situation</Original>
+         <German>Lage</German>
+       </Key>
+       <Key ID="STR_BRIEFTAG_ORDER">
+         <Original>Order</Original>
+         <German>Auftrag</German>
+       </Key>
+       <Key ID="STR_BRIEFTAG_EXECUTION">
+         <Original>Execution</Original>
+         <German>Durchführung</German>
+       </Key>
+       <Key ID="STR_BRIEFTAG_SUPPORT">
+         <Original>Support</Original>
+         <German>Unterstützung</German>
+       </Key>
+       <Key ID="STR_TXT_TSK1_LONG">
+         <Original>Go to the location to observe an area!</Original>
+         <German>Gehen Sie zu der Position um ein Gebiet zu beobachten!</German>
+       </Key>
+       <Key ID="STR_TXT_TSK1_SHORT">
+         <Original>Go to the position!</Original>
+         <German>Gehe zu der Position!</German>
+       </Key>
+       <Key ID="STR_TXT_TSK2_LONG">
+         <Original>Look for a place where you could find a map!</Original>
+         <German>Suchen Sie nach einem Ort an dem man eine Karte finden könnte!</German>
+       </Key>
+       <Key ID="STR_TXT_TSK2_SHORT">
+         <Original>Find a map</Original>
+         <German>Finde eine Karte</German>
+       </Key>
+       <Key ID="STR_TXT_TSK3_LONG">
+         <Original>Look for a place where you could find a map!</Original>
+         <German>Suchen Sie nach einem Ort an dem man eine Karte finden könnte!</German>
+       </Key>
+       <Key ID="STR_TXT_TSK3_SHORT">
+         <Original>Find a map</Original>
+         <German>Finde eine Karte</German>
+       </Key>
+   </Package>
+   <Package name="mis_control">
+       <Key ID="STR_AddAction1">
+         <Original>Browse Backpack</Original>
+         <German>Durchsuche Rucksack</German>
+       </Key>
+   </Package>
+   </Project>

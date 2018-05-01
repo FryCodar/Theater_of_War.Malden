@@ -11,5 +11,5 @@ Examples:  -
 Author: Fry
 
 ----------------------------------------------------------------------------------------------------------------- */
-sleep (random 2);
-_this remoteExec ["MSOT_system_fnc_manageMissionCheck",0,false];
+sleep (random 4);
+REMOTE_TRIEXESM(_this,system,manageMissionCheck,0);

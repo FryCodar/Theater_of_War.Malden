@@ -19,9 +19,8 @@ Author: Fry
 ---------------------------------------------------------------------------- */
 
 private ["_type","_arrow_over_point"];
-params ["_position","_idx","_chk_posses"];
+params ["_position","_idx",["_chk_posses",false]];
 
-If(isNil "_chk_posses")then{_chk_posses = false;};
 _type = "";
 _arrow_over_point = "";
 switch(_idx)do

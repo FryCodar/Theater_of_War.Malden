@@ -32,7 +32,7 @@ missionNamespace setVariable [STRVAR_DO(write_to_missinfo),true,true];
 switch(toUpper _index)do
 {
   case "MAINMARKER":{
-                      If((typeName _value) isEqualTo "ARRAY" && {(typeName _add_at_choice) isEqualTo "STRING"})then
+                      If((typeName _value) isEqualTo "ARRAY" && {(typeName _add_at_choice) isEqualTo "ARRAY"})then
                       {
                         _holder = missionNamespace getVariable [STRVAR_DO(mission_main_marker),[]];
                         If(count _holder > 0)then
@@ -103,6 +103,7 @@ switch(toUpper _index)do
                       }else{LOG_ERR("MAINACTIONS : WRONG DATATYPE IN FUNCTION PARAMETERS DETECTED!");};
                      };
   case "ACTIONSTORAGE":{
+
                           If((typeName _value) isEqualTo "ARRAY")then
                           {
                             _holder = missionNamespace getVariable [STRVAR_DO(action_storage),[]];
@@ -112,9 +113,13 @@ switch(toUpper _index)do
                               If(count _search_it == 0)then
                               {
                                 ARR_ADDVAR(_holder,_value); missionNamespace setVariable [STRVAR_DO(action_storage),_holder,true];_output = true;
+                                REMOTE_TRIEXESM(_value,system,setClientAction,0);
                               }else{LOG_ERR("ACTIONSTORAGE : SAME VALUE IN INFO STORAGE DETECTED");};
                               ARR_ADDVAR(_holder,_value); missionNamespace setVariable [STRVAR_DO(action_storage),_holder,true];_output = true;
-                            }else{_holder = [_value]; missionNamespace setVariable [STRVAR_DO(action_storage),_holder,true];_output = true;};
+                            }else{_holder = [_value]; missionNamespace setVariable [STRVAR_DO(action_storage),_holder,true];
+                                  REMOTE_TRIEXESM(_value,system,setClientAction,0);
+                                  _output = true;
+                                 };
                           }else{LOG_ERR("ACTIONSTORAGE : WRONG DATATYPE IN FUNCTION PARAMETERS DETECTED!");};
                        };
   case "RESPAWNPOSES":{

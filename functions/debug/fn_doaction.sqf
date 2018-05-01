@@ -1,7 +1,7 @@
 if(!hasInterface) exitwith {};
 #include "msot_components.hpp"
 
-  private ["_obj","_caller","_idx","_xtra","_txt"];
+  private ["_obj","_caller","_idx","_xtra","_txt","_bunkers"];
   _obj = _this select 0;
   _caller = _this select 1;
   _idx = _this select 2;
@@ -27,19 +27,19 @@ if(!hasInterface) exitwith {};
   		  //diag_log format ["[%1,%2]", (getPos _caller),(getDir _caller)];
 
   		  //hint format ["%1",(getDir _caller)];
+
+
           };
    case 2:{
             hint "Script begins";
-            /*
-            ["MAINTARGETS",(getMarkerPos "test1"),[T1]] spawn MSOT_system_fnc_addMissionInfos;
-            hint str (missionNamespace getVariable [STRVAR_DO(mission_main_targets),[]]);
 
-            C1 addEventHandler ["killed", {[(_this select 0),"FAILED"] call MSOT_system_fnc_testHandler;}];
+            [0] execVM "Missions\mission_2.sqf";
 
-            hint "Adding abeschlossen";
-            */
-          //  ["MAINTARGETS",(_this select 0),"SUCCESS"] remoteExec ["MSOT_system_fnc_testHandler",0];
-            
+            //[20,(getPos Truck),"BOMB",false] spawn MSOT_fnc_startCount;
+
+
+
+            //deleteVehicle ((missionNamespace getVariable ["BAGP",[]]) select 0);
 
           };
    case 3:{
@@ -54,9 +54,15 @@ if(!hasInterface) exitwith {};
           };
 
    case 4:{
+            /*
   			     hint "Open Map and Click on it to disable the Cursor Function";
             onMapSingleClick "hint 'All MouseCurser functions on Map are disabled!';onMapSingleClick '';true;";
+            */
+            [[4856.38,11104.6,0]] call MFUNC(system,delFromSystem);
 
+
+            sleep 2;
+            hint str (missionNamespace getVariable[STRVAR_DO(vehicle_store),[]]);
   		    };
 
   };
@@ -65,18 +71,14 @@ if(!hasInterface) exitwith {};
 
 
 
-
-
-
-
-
-
-
-
-
-
+//
 
 /*
+IDSEH = player addEventHandler ["InventoryOpened",{[[0],"Missions\mission_1.sqf"] remoteExec ["execVM", 0]; player removeEventHandler ["InventoryOpened",IDSEH];}];
+
+
+
+
 
 PFEIL Blau = "Sign_Arrow_Blue_F"
               Sign_Arrow_F

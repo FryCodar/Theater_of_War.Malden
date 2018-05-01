@@ -15,23 +15,22 @@ Author: Fry
 private ["_check_arr"];
 If(isNil "MANAGE_MISSION_HOLDER")then{MANAGE_MISSION_HOLDER = [];};
 _check_arr = _this;
-sleep (random 4);
-
+sleep (random 5);
 switch(true)do
 {
   case (missionNamespace getVariable [STRVAR_DO(write_to_missinfo),false]):{
                                                                              ARR_ADDVAR(MANAGE_MISSION_HOLDER,_check_arr);
-                                                                             If(!missionNamespace getVariable [STRVAR_DO(manage_delete_missinfo),false])then
+                                                                             If(!(missionNamespace getVariable [STRVAR_DO(manage_delete_missinfo),false]))then
                                                                              {
                                                                               [] spawn MFUNC(system,workOffMisHolder);
                                                                              };
                                                                            };
   case (missionNamespace getVariable [STRVAR_DO(delete_from_missinfo),false]):{
                                                                                 ARR_ADDVAR(MANAGE_MISSION_HOLDER,_check_arr);
-                                                                                If(!missionNamespace getVariable [STRVAR_DO(manage_delete_missinfo),false])then
+                                                                                If(!(missionNamespace getVariable [STRVAR_DO(manage_delete_missinfo),false]))then
                                                                                 {
                                                                                   [] spawn MFUNC(system,workOffMisHolder);
                                                                                 };
                                                                               };
-  case (!missionNamespace getVariable [STRVAR_DO(delete_from_missinfo),false]):{_check_arr spawn MFUNC(system,doMissionCheck);};
+  case (!(missionNamespace getVariable [STRVAR_DO(delete_from_missinfo),false])):{_check_arr spawn MFUNC(system,doMissionCheck);};
 };

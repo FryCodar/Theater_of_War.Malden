@@ -19,7 +19,7 @@ Author: Fry
 private ["_center_x","_center_y","_x_k","_y_k","_cos_num","_sin_num","_output","_holder_arr","_allowed","_noanglecalc",
          "_add_dist","_slope","_i","_sloped_pos"];
 params ["_position","_dist","_num","_dir"];
-If(isNil "_spec")then{_spec = false;};
+
 _center_x = (_position select 0);
 _center_y = (_position select 1);
 _x_k = 0;

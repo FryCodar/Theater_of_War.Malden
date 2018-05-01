@@ -6,11 +6,10 @@ Function: MSOT_system_fnc_getForcesCalc
 
 Description: Calculated number of enemies, depending on the number of players!
 
-Parameters: [NUMBER,(Optional:NUMBER/BOOL)]
+Parameters: [NUMBER,(Optional:BOOL)]
 
             NUMBER :  Number of player or number of Enemy Groups
-            OPTIONAL: Number - Number of Soldiers in a Enemy Group (Calculate Soldiers for House Positions)
-                      BOOL - true/false (dividing the number of groups and soldiers for Night Effect)
+            OPTIONAL: BOOL - true/false (dividing the number of groups and soldiers for Night Effect)
 
 
 Returns: ARRAY
@@ -27,23 +26,21 @@ Examples:
 Author: Fry
 
 ----------------------------------------------------------------------------------------------------------------- */
-private ["_output","_human_dep_forces","_unit_calc","_group_calc","_vehicle_calc","_static_weapon_calc","_diffi"];
-params ["_group_count","_men_count"];
+private ["_output","_human_dep_forces","_unit_calc","_group_calc","_vehicle_calc","_static_weapon_calc","_i","_cal_num"];
+params ["_men_count",["_is_night",false]];
 
-_human_dep_forces = false;
-_night_check = false;
-If(isNil "_men_count")then{_human_dep_forces = true;}else{If(typeName _men_count == "BOOL")then{_night_check = _men_count;};};
+
+If(_men_count < 5)then{_men_count = 5;};
 
 _output = [];
 _unit_calc = 0;
 _group_calc = 0;
 _vehicle_calc = 0;
 _static_weapon_calc = 0;
-_diffi = ["mission_difficulty",2] call BFUNC(getParamValue);
 
-If(_human_dep_forces)then
-{
-  switch(_diffi)do
+
+
+  switch(["mission_difficulty",2] call BFUNC(getParamValue))do
   {
     case 0:{_group_calc = 1.1;_unit_calc = 3;};
     case 1:{_group_calc = 1.1;_unit_calc = 4;};
@@ -51,36 +48,29 @@ If(_human_dep_forces)then
     case 3:{_group_calc = 0.9;_unit_calc = 5;_vehicle_calc = 0.3;_static_weapon_calc = 0.4;};
     default {_group_calc = 0.9;_unit_calc = 6;_vehicle_calc = 0.3;_static_weapon_calc = 0.4;};
   };
-  If(_night_check)then
+  If(_is_night)then
   {
-    _output = [
-                (If((round(_group_count * _group_calc)) > 22)then{(22 * 0.5)}else{(round((_group_count * _group_calc) * 0.5))}),
-                (round(_unit_calc * 0.5)),
-                (If((round(_group_count * _vehicle_calc)) > 12)then{12}else{(round(_group_count * _vehicle_calc))}),
-                (If((round(_group_count * _static_weapon_calc)) > 15)then{15}else{(round(_group_count * _static_weapon_calc))})
-              ];
+    F_LOOP(_i,0,3){
+      _cal_num = 0;
+      switch(_i)do
+      {
+        case 0:{_cal_num = If((round(_men_count * _group_calc)) > 22)then{(22 * 0.5)}else{(round((_men_count * _group_calc) * 0.5))};ARR_ADDVAR(_output,_cal_num);};
+        case 1:{_cal_num = (round(_unit_calc * 0.5));ARR_ADDVAR(_output,_cal_num);};
+        case 2:{If(_vehicle_calc > 0)then{_cal_num = If((round(_men_count * _vehicle_calc)) > 12)then{12}else{(round(_men_count * _vehicle_calc))};ARR_ADDVAR(_output,_cal_num);}else{ARR_ADDVAR(_output,_cal_num);};};
+        case 3:{If(_static_weapon_calc > 0)then{_cal_num = If((round(_men_count * _static_weapon_calc)) > 15)then{15}else{(round(_men_count * _static_weapon_calc))};ARR_ADDVAR(_output,_cal_num);}else{ARR_ADDVAR(_output,_cal_num);};};
+      };
+    };
   }else{
-        _output = [
-                    (If((round(_group_count * _group_calc)) > 22)then{22}else{(round(_group_count * _group_calc))}),
-                    _unit_calc,
-                    (If((round(_group_count * _vehicle_calc)) > 12)then{12}else{(round(_group_count * _vehicle_calc))}),
-                    (If((round(_group_count * _static_weapon_calc)) > 15)then{15}else{(round(_group_count * _static_weapon_calc))})
-                  ];
+         F_LOOP(_i,0,3){
+          _cal_num = 0;
+          switch(_i)do
+          {
+            case 0:{_cal_num = If((round(_men_count * _group_calc)) > 22)then{22}else{(round(_men_count * _group_calc))};ARR_ADDVAR(_output,_cal_num);};
+            case 1:{_cal_num = _unit_calc; ARR_ADDVAR(_output,_cal_num);};
+            case 2:{If(_vehicle_calc > 0)then{_cal_num = If((round(_men_count * _vehicle_calc)) > 12)then{12}else{(round(_men_count * _vehicle_calc))};ARR_ADDVAR(_output,_cal_num);}else{ARR_ADDVAR(_output,_cal_num);};};
+            case 3:{If(_static_weapon_calc > 0)then{_cal_num = If((round(_men_count * _static_weapon_calc)) > 15)then{15}else{(round(_men_count * _static_weapon_calc))};ARR_ADDVAR(_output,_cal_num);}else{ARR_ADDVAR(_output,_cal_num);};};
+          };
+         };
        };
-}else{
 
-  switch(_diffi)do
-  {
-    case 0:{_group_calc = 0.1;_unit_calc = 1;};
-    case 1:{_group_calc = 0.1;_unit_calc = 1;};
-    case 2:{_group_calc = 0.2;_unit_calc = 1;};
-    case 3:{_group_calc = 0.3;_unit_calc = 2;};
-    default {_group_calc = 0.4;_unit_calc = 2;};
-  };
-
-  _output = [
-              (If((round((_group_count * _men_count) * _group_calc)) > 10)then{10}else{(round((_group_count * _men_count) * _group_calc))}),
-              _unit_calc
-            ];
-};
 _output

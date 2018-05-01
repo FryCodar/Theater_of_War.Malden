@@ -17,8 +17,8 @@ Author: Fry
 
 ------------------------------------------------------------------------------------------------------------- */
 private ["_output","_number","_found_pos","_co","_angle","_mran","_point","_dir","_onmap","_statics","_slope"];
-params ["_position","_radius","_big_radius"];
-If(isNil "_big_radius")then{_big_radius = 5;};
+params ["_position","_radius",["_big_radius",5]];
+
 _output = [];
 _found_pos = [];
 _co = 0;

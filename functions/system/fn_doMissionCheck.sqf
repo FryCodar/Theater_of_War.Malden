@@ -22,14 +22,13 @@ Author: Fry
 ----------------------------------------------------------------------------------------------------------------- */
 
 private ["_work_arround","_output","_found_pos","_holder","_search_idx","_f1_idx","_f2_idx","_founded_arr","_founded_2nd_arr","_target_arr","_target","_marker_name",
-         "_script","_clear_mission","_holder_action","_handle"];
+         "_script","_clear_mission","_holder_action","_handle","_size","_st_idx","_del_bool"];
 params ["_idx","_value","_value1","_value2"];
-
-If(!missionNamespace getVariable [STRVAR_DO(delete_from_missinfo),false])then{
-missionNamespace setVariable [STRVAR_DO(delete_from_missinfo),true,true];};
 
 If(missionNamespace getVariable [STRVAR_DO(write_to_missinfo),false])then
 {waitUntil{!(missionNamespace getVariable [STRVAR_DO(write_to_missinfo),false])};};
+
+missionNamespace setVariable [STRVAR_DO(delete_from_missinfo),true,true];
 
 _work_arround = [];
 _output = [];
@@ -56,8 +55,8 @@ switch(toUpper _idx)do
                             {
                               case "STRING":{If(count _script > 0)then{
                                              [3,_found_pos,_target,_value1,_script] call {_handle = [(_this select 0),(_this select 1),(_this select 2),(_this select 3)] execVM (_this select 4);
-                                                                                         waitUntil{scriptDone _handle};
-                                                                                        };
+                                                                                          waitUntil{scriptDone _handle};
+                                                                                         };
                                              };
                                             };
                               case "CODE":{[3,_found_pos,_target,_value1] call _script;};
@@ -67,7 +66,7 @@ switch(toUpper _idx)do
                             {
                               _clear_mission = true; ARR_MINIDX(_holder,_f1_idx);
                             }else{ARR_SET(_founded_arr,1,_founded_2nd_arr); ARR_SET(_holder,_f1_idx,_founded_arr);};
-                            missionNamespace setVariable [STRVAR_DO(mission_main_targets),_holder,false;];
+                            missionNamespace setVariable [STRVAR_DO(mission_main_targets),_holder,false];
                           };
                           //Check & Clear MAINACTIONS
                           _holder_action = missionNamespace getVariable [STRVAR_DO(mission_actions),[]];
@@ -89,7 +88,7 @@ switch(toUpper _idx)do
                             If(count _search_idx > 0)then
                             {
                               ARR_MINIDX(_holder_action,(_search_idx select 0));
-                              If(!isNil "_value2" && {(typeName _value2) isEqualTo "BOOL"})then{deleteVehicle _value;};
+                              If(!isNil "_value2" && (typeName _value2) isEqualTo "BOOL")then{If(_value2)then{deleteVehicle _value;};};
                               missionNamespace setVariable [STRVAR_DO(action_storage),_holder_action,true];
                             };
                           };
@@ -155,32 +154,35 @@ switch(toUpper _idx)do
                             {
                               _f1_idx = (_search_idx select 0); _f2_idx = (_search_idx select 1); _founded_arr = (_holder select _f1_idx);
                               _found_pos = (_founded_arr select 0);_founded_2nd_arr = (_founded_arr select 1); _target_arr = (_founded_2nd_arr select _f2_idx);
-                              _target = (_target_arr select 0); _script = (_target_arr select 1);
-                              If(isNil "_value1")then{_value1 = If(count _target_arr) == 3)then{(_target_arr select 2)}else{0};}else{_value = 0;};
+                              _target = (_target_arr select 0); _script = (_target_arr select 1);_st_idx = (_target_arr select 2);_del_bool = (_target_arr select 3);
+                              _size = ((triggerArea _value) select 0); deleteVehicle _value;
                               switch(typeName _script)do
                               {
                                 case "STRING":{If(count _script > 0)then
                                                {
-                                                  [_value1,_found_pos,_value,_script] spawn {
+                                                  [_st_idx,_found_pos,_size,_script] spawn {
                                                                                               sleep 2;
                                                                                               [(_this select 0),(_this select 1),(_this select 2)] execVM (_this select 3);
                                                                                             };
                                                };
                                               };
-                                case "CODE":{[_value1,_found_pos,_value,_script] spawn {
+                                case "CODE":{[_st_idx,_found_pos,_size,_script] spawn {
                                                                                         sleep 2;
                                                                                         [(_this select 0),(_this select 1),(_this select 2)] spawn (_this select 3);
                                                                                        };
                                             };
-                            };
+                             };
                             ARR_MINIDX(_founded_2nd_arr,_f2_idx);
                             If(count _founded_2nd_arr == 0)then
-                            {ARR_MINIDX(_holder,_f1_idx);}else{ARR_SET(_founded_arr,1,_founded_2nd_arr); ARR_SET(_holder,_f1_idx,_founded_arr);};
+                            {ARR_MINIDX(_holder,_f1_idx);}else{
+                                                               If(_del_bool)then{{deleteVehicle (_x select 0);}forEach _founded_2nd_arr;ARR_MINIDX(_holder,_f1_idx);
+                                                               }else{ARR_SET(_founded_arr,1,_founded_2nd_arr); ARR_SET(_holder,_f1_idx,_founded_arr);};
+                                                              };
                             missionNamespace setVariable [STRVAR_DO(mission_main_trigger),_holder,false];
                           };
-                        }else{LOG_ERR("CHECK_FNC MAINTRIGGERS : WRONG DATATYPE IN FUNCTION PARAMETERS DETECTED!");}
-                     };
+                         };
+                        }else{LOG_ERR("CHECK_FNC MAINTRIGGERS : WRONG DATATYPE IN FUNCTION PARAMETERS DETECTED!");};
+                    };
 };
 
-If(!missionNamespace getVariable [STRVAR_DO(manage_delete_missinfo),false])then{
-  missionNamespace setVariable [STRVAR_DO(delete_from_missinfo),false,true];};
+missionNamespace setVariable [STRVAR_DO(delete_from_missinfo),false,true];

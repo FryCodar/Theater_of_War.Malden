@@ -18,9 +18,8 @@ Author: Fry
 
 -------------------------------------------------------------------------------------------------- */
 private ["_output","_inhousepos","_level_count","_x","_last_levelno","_add_arr","_new_levelno","_i"];
-params ["_house","_idx"];
+params ["_house",["_idx","COUNT"]];
 
-If(isNil "_idx")then{_idx = "COUNT";};
 _output = If(_idx == "COUNT")then{0}else{[]};
 _inhousepos = [];
 _inhousepos = [_house] call BFUNC(buildingPositions);

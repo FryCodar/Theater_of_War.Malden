@@ -18,9 +18,8 @@ Author: Fry
 -------------------------------------------------------------------------------------------------- */
 
 private ["_output","_found"];
-params ["_posobj","_types","_radius","_list"];
+params ["_posobj","_types","_radius",["_list",false]];
 
-If(isNil "_list")then{_list = false;};
 _output = 0;
 _found = _posobj nearEntities [_types,_radius];
 If(count _found > 0)then

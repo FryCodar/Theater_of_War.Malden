@@ -26,10 +26,6 @@ class TAGADD
 									 				   description = "Returns a list of nearest terrain objects.";
 
 									 			   };
-			class dataType {
-                       description = "Returns the data type of an expression.";
-
-										 };
 			class getMapLocations {
 				                      description = "Returns the Locations of a Map.";
 			                      };

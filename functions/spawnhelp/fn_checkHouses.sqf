@@ -18,9 +18,8 @@ Author: Fry
 
 -------------------------------------------------------------------------------------------------- */
 private ["_output","_position","_house_arr","_house_list","_good_houses"];
-params ["_posobj","_radius","_check_pos","_list"];
+params ["_posobj","_radius","_check_pos",["_list",false]];
 
-If(isNil "_list")then{_list = false;};
 _output = If(_list)then{[]}else{0};
 _house_arr = [];
 _position = [];

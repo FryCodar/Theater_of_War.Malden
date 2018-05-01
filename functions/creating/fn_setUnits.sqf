@@ -48,10 +48,7 @@ private ["_output","_do_your_job","_get_number_enemies","_main_pos","_spawn_pos"
          "_x","_setting_grp_num","_setting_unit_num","_grp_crea","_group_classes","_unit_crea","_grp_arr","_grp","_house_ctrl_arr","_set_in_house","_house_ctrl",
          "_ctrl_num","_house_lvl","_unit","_spawn_pos_holder","_unit_counter","_housew_arr","_everyhouse","_gethouse","_house_spawn","_border_pos","_searched_house"];
 
-params ["_position","_radius","_grp_num","_units_in_grp_num","_group_choice","_location_idx","_behaviour_idx","_combat_idx"];
-
-If(isNil "_behaviour_idx")then{_behaviour_idx = "CARELESS";};
-If(isNil "combat_idx")then{_combat_idx = "YELLOW";};
+params ["_position","_radius","_grp_num","_units_in_grp_num","_group_choice","_location_idx",["_behaviour_idx","CARELESS"],["_combat_idx","YELLOW"]];
 
 IF(count MSOT_MEN == 0 && count MSOT_SFMEN == 0) exitWith {LOG_ERR("Control MSOT_MEN ARRAY");};
 

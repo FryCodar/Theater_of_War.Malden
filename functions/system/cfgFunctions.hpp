@@ -34,6 +34,9 @@ class TAGADD
 			 class getInfoArray {
 														description = "Search SystemInfos in Arrays";
 													};
+			 class getPlayerCount {
+				 											description = "Counts Player on Server";
+			 											};
 			 class setUnitSkill {
 														 description = "Set the Skill for each Units in Group";
  												 	};
@@ -53,6 +56,9 @@ class TAGADD
 			 class setRespawnVecs {
 				 											description = "Respawn defined Vehicles";
 			 											};
+			 class setTargetBehavior {
+				 												description = "Change Group Behavior";
+			 												 };
 			 class setTrigger {
 				 									description = "set Triggers for defined Actions";
 			 									};

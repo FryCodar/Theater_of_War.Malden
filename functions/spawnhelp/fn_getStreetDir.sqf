@@ -18,10 +18,9 @@ Author: Fry
 
 ------------------------------------------------------------------------------------------------------------- */
 private ["_output","_next_streetsblock","_dir","_is_ok","_check_arr","_chk_dir","_chk_angle"];
-params ["_streetblockname","_idx","_optpos"];
+params ["_streetblockname","_idx",["_optpos",[]]];
 _output = [];
 _dir = 0;
-If(isNil "_optpos")then{_optpos = [];};
 If(_idx > 1)then{If(count _optpos <= 2)exitWith {LOG_ERR("GRAD_spawnhelp_fnc_getStreetDir: NO OPTIONAL POSITION FOUND!");};};
 _next_streetsblock = roadsConnectedTo _streetblockname;
 switch(_idx)do

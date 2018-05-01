@@ -218,3 +218,5 @@ MSOT_C4_CLASSES = [
 			              "rhsusf_m112_ammo",
 			              "rhsusf_m112x4_ammo"
                   ];
+
+init_main_classes = true;

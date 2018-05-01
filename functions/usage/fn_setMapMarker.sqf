@@ -29,17 +29,11 @@ Author: Fry
 
 -------------------------------------------------------------------------------------------------- */
 private ["_output","_do_your_job","_main_pos","_marker","_chk_to_store"];
-params ["_marker_pos","_marker_name","_marker_shape","_marker_size","_marker_color","_marker_type","_marker_brush","_marker_dir","_marker_txt"];
+params ["_marker_pos","_marker_name","_marker_shape","_marker_size",["_marker_color","ColorRed"],["_marker_type","Empty"],["_marker_brush","SolidBorder"],["_marker_dir",0],["_marker_txt",""]];
 
 _output = "";
 _do_your_job = true;
 
-
-If(isNil "_marker_color")then{_marker_color = "ColorRed";};
-If(isNil "_marker_type")then{_marker_type = "Empty";};
-If(isNil "_marker_brush")then{_marker_brush = "SolidBorder";};
-If(isNil "_marker_dir")then{_marker_dir = 0;};
-If(isNil "_marker_txt")then{_marker_txt = "";};
 
 switch(toUpper _marker_shape)do
 {

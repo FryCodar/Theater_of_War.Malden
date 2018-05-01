@@ -18,11 +18,11 @@ private ["_mapSize","_isinMap"];
 params ["_position"];
 
 _mapSize = getNumber (configFile>>"CfgWorlds">>worldName>>"mapSize");
-_isinMap = true;
 
-switch(true)do
-{
-  case ((_position select 0) < 0 || (_position select 0) > _mapSize):{_isinMap = false;};
-  case ((_position select 1) < 0 || (_position select 1) > _mapSize):{_isinMap = false;};
-};
+_isinMap = switch(true)do
+           {
+            case ((_position select 0) < 0 || (_position select 0) > _mapSize):{false};
+            case ((_position select 1) < 0 || (_position select 1) > _mapSize):{false};
+            default {true};
+          };
 _isinMap

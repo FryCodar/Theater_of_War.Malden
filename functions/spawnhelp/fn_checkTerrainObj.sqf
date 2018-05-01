@@ -17,10 +17,9 @@ Author: Fry
 
 -------------------------------------------------------------------------------------------------- */
 private ["_output","_arr"];
-params ["_center","_types","_radius","_list"];
+params ["_center","_types","_radius",["_list",false]];
 
-If((typeName _types) != "ARRAY") exitWith {LOG_ERR("GRAD_spawnhelp_fnc_checkTerrainObj: NO TYPENAME-ARRAY DETECTED");};
-If(isNil "_list")then{_list = false;};
+If(!((typeName _types) isEqualTo "ARRAY")) exitWith {LOG_ERR("GRAD_spawnhelp_fnc_checkTerrainObj: NO TYPENAME-ARRAY DETECTED");};
 _output = If(_list)then{[]}else{0};
 _arr = [];
 switch(typeName _center)do

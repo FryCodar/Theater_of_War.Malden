@@ -1,4 +1,5 @@
 If(isMultiplayer)then{if(hasInterface)exitWith{};};
+
 #include "msot_components.hpp"
 /* --------------------------------------------------------------------------------------------------------------
 Function: MSOT_system_fnc_setTrigger
@@ -27,34 +28,36 @@ Author: Fry
 
 ----------------------------------------------------------------------------------------------------------------- */
 private ["_trigger_name","_exp_arr"];
+
 params ["_idx","_pos","_size"];
 
 _trigger_name = createTrigger ["EmptyDetector",_pos,false];
 _trigger_name setTriggerArea [_size, _size, 0, false];
 switch(_idx)do
 {
- "ACTIVATE":{
-              _trigger_name setTriggerActivation [MSOT_FRLYTR_SIDE,"PRESENT", false];
-              _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",""];
-            };
- "LEAVE":{
-            _trigger_name setTriggerActivation [MSOT_FRLYTR_SIDE, "NOT PRESENT", false];
-            _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",""];
-         };
- "DETECTED":{
-              _trigger_name setTriggerActivation [MSOT_FRLYTR_SIDE, (MSOT_EMYTR_SIDE + " D"), false];
-              _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",""];
-            };
- "CONTROLLED":{
-                _exp_arr = [
-                            "this && {('Man' countType thisList) < 5} && {('LandVehicle' countType thisList) == 0}",
-                            "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",
-                            ""
-                           ];
-                _trigger_name setTriggerActivation [MSOT_EMYTR_SIDE,"PRESENT", false];
-                _trigger_name setTriggerStatements _exp_arr;
-
+ case "ACTIVATE":{
+                    _trigger_name setTriggerActivation [MSOT_FRLYTR_SIDE,"PRESENT", false];
+                    _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",""];
+                 };
+ case "LEAVE":{
+               _trigger_name setTriggerActivation [MSOT_FRLYTR_SIDE, "NOT PRESENT", false];
+               _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",""];
               };
+ case "DETECTED":{
+                  _trigger_name setTriggerActivation [MSOT_FRLYTR_SIDE, (MSOT_EMYTR_SIDE + " D"), false];
+                  _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",""];
+                };
+ case "CONTROLLED":{
+                      _exp_arr = [
+                                  "this && {('Man' countType thisList) < 5} && {('LandVehicle' countType thisList) == 0}",
+                                  "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",
+                                  ""
+                                 ];
+                      _trigger_name setTriggerActivation [MSOT_EMYTR_SIDE,"PRESENT", false];
+                      _trigger_name setTriggerStatements _exp_arr;
+                    };
 
 };
+
+//"nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck"
 _trigger_name

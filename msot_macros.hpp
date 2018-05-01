@@ -57,6 +57,7 @@
 
 #define SET_POSNOR(var1,var2,num1) var1 setPos [(var2 select 0),(var2 select 1),((var2 select 2) + num1)]
 #define SET_POSATL(var1,var2,num1) var1 setPosATL [(var2 select 0),(var2 select 1),((var2 select 2) + num1)]
+#define SET_POSATLM(var1,var2,num1) var1 setPosATL [(var2 select 0),(var2 select 1),((var2 select 2) - num1)]
 #define SET_POSASL(var1,var2,num1) var1 setPosASL [(var2 select 0),(var2 select 1),((var2 select 2) + num1)]
 #define SET_DIR(var1,num1) var1 setDir num1
 
@@ -67,9 +68,5 @@
 #define ARR_SET(arr1,num1,inarr1) arr1 set [num1,inarr1]
 
 #define CREA_GROUP(var1) createGroup var1
-/*
-#define CREA_UNIT(grpvar1,classvar1,posvar1) grpvar1 createUnit [classvar1, posvar1, [], 0, QUOTE(NONE)]
-#define CREA_UNIT2(grpvar1,classvar1,posvar1,statevar1) grpvar1 createUnit [classvar1, posvar1, [], 0, statevar1]
-#define CREA_VEC(classvar1,posvar1,statevar1) createVehicle [classvar1, posvar1, [], 0, statevar1]
-*/
+
 #define F_LOOP(var1,num1,num2) for QUOTE(var1) from num1 to num2 do

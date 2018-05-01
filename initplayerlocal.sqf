@@ -53,12 +53,11 @@ If(!isNil "_intro_pos_time")then{missionNamespace setVariable [STRVAR_DO(intro_d
 If(!isNil "_changeorloose_equipment")then{missionNamespace setVariable [STRVAR_DO(equip_cleaner),_changeorloose_equipment,false];};
 missionNamespace setVariable [STRVAR_DO(play_intro),_play_intro,false];
 
-diag_log "INITPLAYERLOCAL: Starte INTRO";
-[] spawn MFUNC(intro,playintro);
+["id_start_intro","onPreloadFinished",{["id_start_intro","onPreloadFinished"] call BIS_fnc_removeStackedEventHandler;
+                                       diag_log "INITPLAYERLOCAL: Starte INTRO";
+                                      [] spawn MFUNC(intro,playintro);}] call BIS_fnc_addStackedEventHandler;
 //____________________________________________________________
-waitUntil{!isNil "camera_run"};
+
+sleep 3;
+//waitUntil{!isNil "camera_run"};
 [] call MFUNC(setting,initPlayer);
-//____________________________________________________________
-diag_log "INITPLAYERLOCAL: Starte TFAR FREQS";
-sleep 5;
-[] spawn MFUNC(tfar,addFreq);

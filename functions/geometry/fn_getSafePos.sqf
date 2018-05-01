@@ -20,9 +20,8 @@ Author: Fry
 
 ------------------------------------------------------------------------------------------------------------- */
 private ["_output","_deg_isRandom","_point","_saPos","_slope_chk","_deg_count"];
-params ["_center","_radius","_tolerance","_isborder","_degrees"];
-If(isNil "_isborder")then{_isborder = false;};
-If(isNil "_degrees")then{_degrees = -1;};
+params ["_center","_radius","_tolerance",["_isborder",false],["_degrees",-1]];
+
 _output = [];
 _deg_count = 0;
 _deg_isRandom = false;

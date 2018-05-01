@@ -5,7 +5,10 @@ class TAGADD
 	class tasks
 	{
 		class setTask {
-					            description = "Set Tasks";
+					            description = "Send Tasks to Players";
 				          };
+	  class storedTasks {
+												description = "Set Player Tasks";
+											};
 	};
 };

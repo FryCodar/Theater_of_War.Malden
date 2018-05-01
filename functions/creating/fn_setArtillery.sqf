@@ -20,7 +20,7 @@ params ["_art_pos","_max_radius","_min_radius","_art_idx"];
 
 _expl_class = "";
 _do_it = true;
-If(typeName _art_pos == "ARRAY")then{If(count _art_pos < 3)then{_do_it = false;};}else{_do_it = false;};
+If(typeName _art_pos isEqualTo "ARRAY")then{If(count _art_pos < 3)then{_do_it = false;};}else{_do_it = false;};
 switch(toUpper(_art_idx))do
 {
  case "SMOKE":{_expl_class = "SmokeShellArty";};

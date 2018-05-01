@@ -1,3 +1,3 @@
-#define COMPONENT tfar
+#define COMPONENT briefing
 
 #include "..\msot_macros.hpp"

@@ -16,9 +16,8 @@ Author: Fry
 -------------------------------------------------------------------------------------------------- */
 
 	private ["_output","_slopeObject", "_centerHeight", "_height", "_direction", "_count"];
-  params ["_position","_radius"];
+  params ["_position",["_radius",5]];
 
-  If(isNil "_radius")then{_radius = 5;};
   _output = false;
 	_slopeObject = "Logic" createVehicleLocal _position;
 	_slopeObject setPos _position;

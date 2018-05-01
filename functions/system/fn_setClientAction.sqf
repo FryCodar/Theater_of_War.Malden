@@ -1,4 +1,4 @@
-If(!hasInterface)exitWith{};
+If(isMultiplayer)then{If(!hasInterface)exitWith{};};
 #include "msot_components.hpp"
 
 /* --------------------------------------------------------------------------------------------------------------

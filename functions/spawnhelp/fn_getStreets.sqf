@@ -17,10 +17,9 @@ Author: Fry
 
 -------------------------------------------------------------------------------------------------- */
 private ["_streets_arr", "_streets_counter"];
-params ["_detect_street_point","_detect_street_dist","_list_streets"];
+params ["_detect_street_point","_detect_street_dist",["_list_streets",false]];
 
 
-if(isNil "_list_streets") then {_list_streets = false};
 _streets_arr = [];
 _streets_counter = If(_list_streets)then{[]}else{0};
 
