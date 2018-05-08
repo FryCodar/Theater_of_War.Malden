@@ -8,18 +8,18 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=244;
+		nextID=250;
 	};
 	class MarkerIDProvider
 	{
-		nextID=7;
+		nextID=8;
 	};
 	class Camera
 	{
-		pos[]={12449.656,50.692371,364.72415};
-		dir[]={0.88109118,-0.38552833,-0.27433735};
-		up[]={0.36817783,0.92264235,-0.11463629};
-		aside[]={-0.29731902,-6.7482324e-007,-0.9548986};
+		pos[]={12404.348,73.389977,502.22818};
+		dir[]={0.71444643,-0.32380381,-0.62044531};
+		up[]={0.24456811,0.94605684,-0.21239068};
+		aside[]={-0.65577292,-1.5061814e-006,-0.75512332};
 	};
 };
 binarizationWanted=0;
@@ -257,6 +257,25 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
+			property="ReviveBleedOutDelay";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
+						};
+					};
+					value=300;
+				};
+			};
+		};
+		class Attribute1
+		{
 			property="RespawnTemplates";
 			expression="true";
 			class Value
@@ -288,25 +307,6 @@ class CustomAttributes
 							};
 						};
 					};
-				};
-			};
-		};
-		class Attribute1
-		{
-			property="ReviveBleedOutDelay";
-			expression="false";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
-					value=300;
 				};
 			};
 		};
@@ -1488,7 +1488,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12473.604,23.581314,367.44754};
+						position[]={12473.49,23.524258,367.23898};
 						angles[]={0,1.5858585,0};
 					};
 					side="West";
@@ -1498,14 +1498,14 @@ class Mission
 					};
 					id=152;
 					type="B_UAV_AI";
-					atlOffset=92.317657;
+					atlOffset=92.285995;
 				};
 				class Item1
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12473.604,23.581314,367.44754};
+						position[]={12473.49,23.524258,367.23898};
 						angles[]={0,1.5858585,0};
 					};
 					side="West";
@@ -1516,7 +1516,7 @@ class Mission
 					};
 					id=153;
 					type="B_UAV_AI";
-					atlOffset=92.317657;
+					atlOffset=92.285995;
 				};
 			};
 			class Attributes
@@ -1555,26 +1555,27 @@ class Mission
 				};
 			};
 			id=150;
-			atlOffset=92.286285;
+			atlOffset=92.285995;
 		};
 		class Item31
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={12473.324,25.595837,366.97952};
+				position[]={12473.324,25.595558,366.9798};
 				angles[]={0,1.5858585,0};
 			};
 			side="West";
 			flags=2;
 			class Attributes
 			{
+				init="call{[] spawn {waitUntil{isEngineOn STOMP1};(driver STOMP1) action [""engineOff"", STOMP1];};}";
 				name="STOMP1";
 				reportOwnPosition=1;
 			};
 			id=151;
 			type="B_UGV_01_rcws_F";
-			atlOffset=92.286285;
+			atlOffset=92.285995;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -1611,36 +1612,35 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12473.413,23.688591,372.63919};
+						position[]={12474.365,24.058697,371.74698};
 						angles[]={0,1.5858585,0};
 					};
 					side="West";
-					flags=4;
 					class Attributes
 					{
 						name="STOMP2D";
 					};
 					id=155;
 					type="B_UAV_AI";
-					atlOffset=0.092571259;
+					atlOffset=0.46315956;
 				};
 				class Item1
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12473.413,23.688591,372.63919};
+						position[]={12474.365,24.058697,371.74698};
 						angles[]={0,1.5858585,0};
 					};
 					side="West";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 						name="STOMP2G";
 					};
 					id=156;
 					type="B_UAV_AI";
-					atlOffset=0.092571259;
+					atlOffset=0.46315956;
 				};
 			};
 			class Attributes
@@ -1679,26 +1679,27 @@ class Mission
 				};
 			};
 			id=154;
-			atlOffset=0.46266556;
+			atlOffset=0.46315956;
 		};
 		class Item33
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={12473.205,25.718523,372.20584};
+				position[]={12473.205,25.719017,372.20621};
 				angles[]={0,1.5858585,0};
 			};
 			side="West";
 			flags=2;
 			class Attributes
 			{
+				init="call{[] spawn {waitUntil{isEngineOn STOMP2};(driver STOMP2) action [""engineOff"", STOMP2];};}";
 				name="STOMP2";
 				reportOwnPosition=1;
 			};
 			id=157;
 			type="B_UGV_01_rcws_F";
-			atlOffset=0.46266556;
+			atlOffset=0.46315956;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -1912,7 +1913,7 @@ class Mission
 		class Item40
 		{
 			dataType="Marker";
-			position[]={9964.7051,0,1899.9382};
+			position[]={7912.1001,55.117622,4596.5068};
 			name="campos2";
 			type="Empty";
 			id=209;

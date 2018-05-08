@@ -81,6 +81,8 @@ switch("play_faction" call BIS_fnc_getParamValue)do
 
           MSOT_TRANSHELI = ["O_T_VTOL_02_infantry_dynamicLoadout_F"];
 
+          MSOT_AIRFORCE = [];
+
           MSOT_DRONES = ["O_T_UGV_01_rcws_ghex_F","O_T_UAV_04_CAS_F","O_T_UGV_01_ghex_F"];
 
           MSOT_STATICWEAPONS = ["O_static_AT_F","O_HMG_01_high_F","O_HMG_01_F","O_GMG_01_high_F","O_Mortar_01_F","O_static_AA_F","O_GMG_01_F"];
@@ -96,15 +98,39 @@ switch("play_faction" call BIS_fnc_getParamValue)do
 
            MSOT_MEN = ["O_G_Soldier_GL_F","O_G_Soldier_TL_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_LAT_F","O_G_Soldier_SL_F","O_G_Soldier_A_F","O_G_Soldier_GL_F","O_G_medic_F","O_G_engineer_F","O_G_Soldier_lite_F","O_G_officer_F","O_G_Soldier_F"];
 
+           MSOT_SFMEN = [];
+
+           MSOT_MENURBAN = [];
+
            MSOT_SNIPER = ["O_G_Sharpshooter_F","O_G_Soldier_M_F"];
 
+           MSOT_DIVER = [];
+
+           MSOT_PILOT = [];
+
+           MSOT_PARACHUT = [];
+
            MSOT_CARS = ["O_G_Offroad_01_F","O_G_Offroad_01_armed_F"];
+
+           MSOT_TANKS = [];
+
+           MSOT_ARTILLERY = [];
+
+           MSOT_APC = [];
 
            MSOT_TRANSPORT = ["O_G_Van_02_transport_F","O_G_Van_01_transport_F"];
 
            MSOT_BOATS = ["O_G_Boat_Transport_01_F"];
 
+           MSOT_TRANSHELI = [];
+
+           MSOT_AIRFORCE = [];
+
+           MSOT_DRONES = [];
+
            MSOT_STATICWEAPONS = ["O_G_Mortar_01_F"];
+
+           MSOT_ANTIAIR = [];
 
            MSOT_ENEMY_SIDE = EAST;
 
@@ -116,15 +142,23 @@ switch("play_faction" call BIS_fnc_getParamValue)do
             MSOT_MEN = ["I_support_GMG_F","I_Soldier_lite_F","I_soldier_F","I_officer_F","I_Soldier_AR_F","I_Soldier_AA_F","I_medic_F","I_Soldier_AT_F","I_Soldier_A_F","I_Soldier_repair_F","I_engineer_F","I_Soldier_exp_F","I_soldier_mine_F",
                         "I_Soldier_GL_F","I_support_MG_F","I_support_Mort_F","I_Soldier_AAA_F","I_Soldier_TL_F","I_Soldier_AAR_F","I_Soldier_LAT_F","I_Soldier_SL_F","I_soldier_UAV_06_F","I_soldier_UAV_F","I_Soldier_AAT_F","I_soldier_UAV_06_medical_F","I_support_AMG_F","I_support_AMort_F"];
 
+            MSOT_SFMEN = [];
+
+            MSOT_MENURBAN = [];
+
             MSOT_SNIPER = ["I_ghillie_sard_F","I_Soldier_M_F","I_Sniper_F","I_ghillie_lsh_F","I_ghillie_ard_F","I_Spotter_F"];
 
             MSOT_DIVER = ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
 
             MSOT_PILOT = ["I_pilot_F","I_crew_F","I_helicrew_F","I_helipilot_F","I_Fighter_Pilot_F"];
 
+            MSOT_PARACHUT = [];
+
             MSOT_CARS = ["I_MRAP_03_gmg_F","I_MRAP_03_F","I_MRAP_03_hmg_F"];
 
             MSOT_TANKS = ["I_MBT_03_cannon_F"];
+
+            MSOT_ARTILLERY = [];
 
             MSOT_APC = ["I_APC_tracked_03_cannon_F","I_APC_Wheeled_03_cannon_F"];
 
@@ -140,6 +174,8 @@ switch("play_faction" call BIS_fnc_getParamValue)do
 
             MSOT_STATICWEAPONS = ["I_HMG_01_high_F","I_Mortar_01_F","I_GMG_01_high_F","I_static_AT_F","I_GMG_01_F","I_static_AA_F","I_HMG_01_F"];
 
+            MSOT_ANTIAIR = [];
+
             MSOT_ENEMY_SIDE = independent;
             _enemy_side = sideEnemy;
             MSOT_ENEMY_SIDE setFriend [_enemy_side , 1];
@@ -152,15 +188,39 @@ switch("play_faction" call BIS_fnc_getParamValue)do
 
             MSOT_MEN = ["I_G_Soldier_LAT_F","I_G_Soldier_exp_F","I_G_Soldier_AR_F","I_G_Soldier_TL_F","I_G_Soldier_SL_F","I_G_Soldier_GL_F","I_G_engineer_F","I_G_officer_F","I_G_Soldier_A_F","I_G_medic_F","I_G_Soldier_F","I_G_Soldier_lite_F"];
 
+            MSOT_SFMEN = [];
+
+            MSOT_MENURBAN = [];
+
             MSOT_SNIPER = ["I_G_Soldier_M_F","I_G_Sharpshooter_F"];
 
+            MSOT_DIVER = [];
+
+            MSOT_PILOT = [];
+
+            MSOT_PARACHUT = [];
+
             MSOT_CARS = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F"];
+
+            MSOT_TANKS = [];
+
+            MSOT_ARTILLERY = [];
+
+            MSOT_APC = [];
 
             MSOT_TRANSPORT = ["I_G_Van_01_transport_F","I_G_Van_02_transport_F"];
 
             MSOT_BOATS = ["I_G_Boat_Transport_01_F"];
 
+            MSOT_TRANSHELI = [];
+
+            MSOT_AIRFORCE = [];
+
+            MSOT_DRONES = [];
+
             MSOT_STATICWEAPONS = ["I_G_Mortar_01_F"];
+
+            MSOT_ANTIAIR = [];
 
             MSOT_ENEMY_SIDE = independent;
             _enemy_side = sideEnemy;
@@ -176,15 +236,37 @@ switch("play_faction" call BIS_fnc_getParamValue)do
 
             MSOT_SFMEN = ["I_C_Soldier_Para_6_F","I_C_Soldier_Para_7_F","I_C_Soldier_Para_1_F","I_C_Soldier_Para_3_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_5_F","I_C_Soldier_Para_2_F"];
 
+            MSOT_MENURBAN = [];
+
+            MSOT_SNIPER = [];
+
+            MSOT_DIVER = [];
+
             MSOT_PILOT = ["I_C_Pilot_F","I_C_Helipilot_F"];
 
+            MSOT_PARACHUT = [];
+
             MSOT_CARS = ["I_C_Offroad_02_unarmed_F"];
+
+            MSOT_TANKS = [];
+
+            MSOT_ARTILLERY = [];
+
+            MSOT_APC = [];
 
             MSOT_TRANSPORT = ["I_C_Van_01_transport_F","I_C_Van_02_transport_F"];
 
             MSOT_BOATS = ["I_C_Boat_Transport_02_F"];
 
             MSOT_TRANSHELI = ["I_C_Heli_Light_01_civil_F","I_C_Plane_Civil_01_F"];
+
+            MSOT_AIRFORCE = [];
+
+            MSOT_DRONES = [];
+
+            MSOT_STATICWEAPONS = [];
+
+            MSOT_ANTIAIR = [];
 
 
             MSOT_ENEMY_SIDE = independent;
